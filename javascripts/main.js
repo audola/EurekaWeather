@@ -83,7 +83,7 @@ function main() {
     getItems();
     getWeatherItems();
 
-    setInterval(process, 20 * 1000);
+    // setInterval(process, 20 * 1000);
     setInterval(updateTime, 500);
     process();
     updateTime();
@@ -456,7 +456,7 @@ function showLocalTime() {
         || eorzeaTimeStr == "08:00"
         || eorzeaTimeStr == "016:00") {
         console.log("# process() by et from et");
-        // process();
+        process();
         //setTimeout(process, 0);
 
     }
@@ -522,15 +522,12 @@ function updateCurrentProcess(_currentDate) {
 
 }
 
-
-
 function getStartTime(_date) {
-    const oneHour = 175 * 1000;
-    // let msec = _date.getTime() - 2 * (70 * 60 * 1000);
-    let msec = _date.getTime() - 2 * (60 * 60 * 1000);
+    const msec = _date.getTime() - 1 * (70 * 60 * 1000);
+    const startMsec = msec - (_date.getTime() % (2 * 70 * 60 * 1000));
 
-    const bell = (msec / oneHour) % 8;
-    const startMsec = msec - Math.round(oneHour * bell);
+    // console.log("startMsec", startMsec);
+    // console.log("new Date(startMsec)", new Date(startMsec));
     return startMsec;
 };
 
