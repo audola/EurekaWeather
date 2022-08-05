@@ -511,8 +511,8 @@ function updateCurrentProcess(_currentDate) {
     const passedPercent = Math.round(100 * passedMills / fullMills) + "%";
     const futurePercent = Math.round(100 * futureMills / fullMills) + "%";
 
-    console.log("passed %:", passedPercent);
-    console.log("future %:", futurePercent);
+    // console.log("passed %:", passedPercent);
+    // console.log("future %:", futurePercent);
 
     if (currentPassedElement != undefined) {
         currentPassedElement.style.height = passedPercent;
