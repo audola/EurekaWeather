@@ -524,7 +524,7 @@ function updateCurrentProcess(_currentDate) {
 }
 
 function getStartTime(_date) {
-    const msec = _date.getTime() - 1 * (70 * 60 * 1000);
+    const msec = _date.getTime() - 2 * (70 * 60 * 1000);
     const startMsec = msec - (_date.getTime() % (2 * 70 * 60 * 1000));
 
     // console.log("startMsec", startMsec);
