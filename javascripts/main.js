@@ -526,7 +526,8 @@ function updateCurrentProcess(_currentDate) {
 
 function getStartTime(_date) {
     const oneHour = 175 * 1000;
-    let msec = _date.getTime() - 2 * (70 * 60 * 1000);
+    // let msec = _date.getTime() - 2 * (70 * 60 * 1000);
+    let msec = _date.getTime() - 2 * (60 * 60 * 1000);
 
     const bell = (msec / oneHour) % 8;
     const startMsec = msec - Math.round(oneHour * bell);
