@@ -452,12 +452,12 @@ function showLocalTime() {
     const eorzeaTime = new EorzeaTime();
     const eorzeaTimeStr = eorzeaTime.toString().substr(0, 5);
 
-    console.log("eorzeaTimeStr",eorzeaTimeStr);
+    //console.log("eorzeaTimeStr",eorzeaTimeStr);
 
     if (eorzeaTimeStr == "00:00"
         || eorzeaTimeStr == "08:00"
         || eorzeaTimeStr == "016:00") {
-        console.log("# process() by et from et");
+        // console.log("# process() by et from et");
         process();
         //setTimeout(process, 0);
 
@@ -511,8 +511,8 @@ function updateCurrentProcess(_currentDate) {
     const passedPercent = Math.round(100 * passedMills / fullMills) + "%";
     const futurePercent = Math.round(100 * futureMills / fullMills) + "%";
 
-    console.log("passed %:", passedPercent);
-    console.log("future %:", futurePercent);
+    // console.log("passed %:", passedPercent);
+    // console.log("future %:", futurePercent);
 
     if (currentPassedElement != undefined) {
         currentPassedElement.style.height = passedPercent;
