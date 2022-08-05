@@ -83,7 +83,7 @@ function main() {
     getItems();
     getWeatherItems();
 
-    // setInterval(process, 20 * 1000);
+    setInterval(process, 30 * 1000);
     setInterval(updateTime, 500);
     process();
     updateTime();
@@ -588,4 +588,3 @@ const weatherCodeMap = {
     "45": 27,
 
 }
-
