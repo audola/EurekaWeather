@@ -529,8 +529,8 @@ function getStartTime(_date) {
     // const startMsec = msec - (_date.getTime() % (2 * 70 * 60 * 1000));
     // const startMsec = msec - (msec % (2 * 70 * 60 * 1000));
     const msec = _date.getTime();
-    const msec2HoursBefore = msec - 2 * ltOneHour;
-    const startMsec = msec2HoursBefore - (msec2HoursBefore % (2 * ltOneHour));
+    const startOfTheEorzeaDay = msec - (msec % ltOneHour);
+    const startMsec = startOfTheEorzeaDay - 2 * ltOneHour;
 
     return startMsec;
 };
