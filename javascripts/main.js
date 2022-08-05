@@ -511,8 +511,8 @@ function updateCurrentProcess(_currentDate) {
     const passedPercent = Math.round(100 * passedMills / fullMills) + "%";
     const futurePercent = Math.round(100 * futureMills / fullMills) + "%";
 
-    // console.log("passed %:", passedPercent);
-    // console.log("future %:", futurePercent);
+    console.log("passed %:", passedPercent);
+    console.log("future %:", futurePercent);
 
     if (currentPassedElement != undefined) {
         currentPassedElement.style.height = passedPercent;
@@ -524,11 +524,14 @@ function updateCurrentProcess(_currentDate) {
 }
 
 function getStartTime(_date) {
-    const msec = _date.getTime() - 2 * (70 * 60 * 1000);
-    const startMsec = msec - (_date.getTime() % (2 * 70 * 60 * 1000));
+    const ltOneHour = 70 * 60 * 1000;
+    // const msec = _date.getTime() - 2 * (70 * 60 * 1000);
+    // const startMsec = msec - (_date.getTime() % (2 * 70 * 60 * 1000));
+    // const startMsec = msec - (msec % (2 * 70 * 60 * 1000));
+    const msec = _date.getTime();
+    const msec2HoursBefore = msec - 2 * ltOneHour;
+    const startMsec = msec2HoursBefore - (msec2HoursBefore % (2 * ltOneHour));
 
-    // console.log("startMsec", startMsec);
-    // console.log("new Date(startMsec)", new Date(startMsec));
     return startMsec;
 };
 
