@@ -69,6 +69,30 @@ let rawWeatherList = [
 
 ];
 
+const weatherCodeMap = {
+    "11": 2,
+    "12": 15,
+    "13": 8,
+    "14": 6,
+    "21": 2,
+    "22": 15,
+    "23": 16,
+    "24": 4,
+    "25": 9,
+    "26": 14,
+    "31": 2,
+    "32": 15,
+    "33": 16,
+    "34": 49,
+    "35": 9,
+    "36": 14,
+    "41": 2,
+    "42": 15,
+    "43": 8,
+    "44": 10,
+    "45": 27,
+
+}
 
 // 実行開始
 main();
@@ -85,7 +109,8 @@ function main() {
 
     setInterval(process, 30 * 1000);
     setInterval(updateTime, 500);
-    process();
+
+    process(true);
     updateTime();
 
     const checkBoxLabels = document.getElementsByTagName("input");
@@ -160,7 +185,28 @@ function getWeatherItems() {
 
 }
 
-function process() {
+function setInitialCheckbox() {
+    const initialCookieStr = document.cookie;
+    const initialCookie = initialCookieStr.split(";")[0].replaceAll(" ", "").split(",");
+    //console.log(initialCookie);
+
+    if (initialCookie == "") {
+        return;
+    }
+
+    initialCookie.forEach(element => {
+        const [key, value] = element.split("=");
+        console.log("key:" + key + ", value:" + value);
+        document.getElementById(key).checked = (value == "true" ? "checked" : "");
+    });
+}
+
+function process(initialFlag) {
+
+    if(initialFlag){
+        setInitialCheckbox();
+    }
+
     const dataTable = document.getElementById("weatherTable");
     let tmpTableInnerHTMLTag = "";
 
@@ -207,6 +253,7 @@ function process() {
     const checkHydatos3Checked = checkHydatos3.checked;
     const checkHydatos4Checked = checkHydatos4.checked;
     const checkHydatos5Checked = checkHydatos5.checked;
+
 
     let currentDate = new Date();
 
@@ -360,6 +407,33 @@ function process() {
 
         tmpTableInnerHTMLTag += trTag1;
         tmpTableInnerHTMLTag += trTag2;
+
+        // ■ cookieセット
+        const cookieStr =
+        'checkBoxAnemos1 = ' + checkAnemos1Checked
+        + ",checkBoxAnemos2 = " + checkAnemos2Checked
+        + ",checkBoxAnemos3 = " + checkAnemos3Checked
+        + ",checkBoxAnemos4 = " + checkAnemos4Checked
+        + ",checkBoxPagos1 = " + checkPagos1Checked
+        + ",checkBoxPagos2 = " + checkPagos2Checked
+        + ",checkBoxPagos3 = " + checkPagos3Checked
+        + ",checkBoxPagos4 = " + checkPagos4Checked
+        + ",checkBoxPagos5 = " + checkPagos5Checked
+        + ",checkBoxPagos6 = " + checkPagos6Checked
+        + ",checkBoxPyros1 = " + checkPyros1Checked
+        + ",checkBoxPyros2 = " + checkPyros2Checked
+        + ",checkBoxPyros3 = " + checkPyros3Checked
+        + ",checkBoxPyros4 = " + checkPyros4Checked
+        + ",checkBoxPyros5 = " + checkPyros5Checked
+        + ",checkBoxPyros6 = " + checkPyros6Checked
+        + ",checkBoxHydatos1 = " + checkHydatos1Checked
+        + ",checkBoxHydatos2 = " + checkHydatos2Checked
+        + ",checkBoxHydatos3 = " + checkHydatos3Checked
+        + ",checkBoxHydatos4 = " + checkHydatos4Checked
+        + ",checkBoxHydatos5 = " + checkHydatos5Checked
+        ;
+        document.cookie = cookieStr;
+
     };
 
 
@@ -564,27 +638,3 @@ function getDayOrNight(et, code) {
 }
 
 
-const weatherCodeMap = {
-    "11": 2,
-    "12": 15,
-    "13": 8,
-    "14": 6,
-    "21": 2,
-    "22": 15,
-    "23": 16,
-    "24": 4,
-    "25": 9,
-    "26": 14,
-    "31": 2,
-    "32": 15,
-    "33": 16,
-    "34": 49,
-    "35": 9,
-    "36": 14,
-    "41": 2,
-    "42": 15,
-    "43": 8,
-    "44": 10,
-    "45": 27,
-
-}
