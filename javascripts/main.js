@@ -186,7 +186,7 @@ function getWeatherItems() {
 }
 
 function setInitialCheckbox() {
-    const initialCookieStr = document.cookie;
+    const initialCookieStr = decodeURIComponent(document.cookie);
     const initialCookie = initialCookieStr.split(";")[0].replaceAll(" ", "").split(",");
     //console.log(initialCookie);
 
@@ -432,7 +432,7 @@ function process(initialFlag) {
         + ",checkBoxHydatos4 = " + checkHydatos4Checked
         + ",checkBoxHydatos5 = " + checkHydatos5Checked
         ;
-        document.cookie = cookieStr;
+        document.cookie = encodeURIComponent(cookieStr);
 
     };
 
